@@ -1,0 +1,167 @@
+<div class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <div class="title-wrapper">
+                <h2>Directory Information Required</h2>
+                <p class="subtitle">Complete the following directory information since you currently practice and intend
+                    to participate at this location.</p>
+            </div>
+            <button class="close-btn" (click)="onCancel()">×</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-section">
+                <!-- Weekend Hours -->
+                <div class="question-row">
+                    <label>Does your practice have weekend hours?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="weekendHours" [value]="true" [(ngModel)]="formData.weekendHours">
+                            Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="weekendHours" [value]="false" [(ngModel)]="formData.weekendHours">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="conditional-input" *ngIf="formData.weekendHours">
+                    <input type="text" [(ngModel)]="formData.weekendHoursDetails" placeholder="Enter details"
+                        class="form-control">
+                </div>
+
+                <!-- Morning Hours -->
+                <div class="question-row">
+                    <label>Does your practice have morning hours before 8 am?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="morningHours" [value]="true" [(ngModel)]="formData.morningHours">
+                            Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="morningHours" [value]="false" [(ngModel)]="formData.morningHours">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="conditional-input" *ngIf="formData.morningHours">
+                    <input type="text" [(ngModel)]="formData.morningHoursDetails" placeholder="Enter details"
+                        class="form-control">
+                </div>
+
+                <!-- Evening Hours -->
+                <div class="question-row">
+                    <label>Does your practice have evening hours after 5 pm?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="eveningHours" [value]="true" [(ngModel)]="formData.eveningHours">
+                            Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="eveningHours" [value]="false" [(ngModel)]="formData.eveningHours">
+                            No
+                        </label>
+                    </div>
+                </div>
+                <div class="conditional-input" *ngIf="formData.eveningHours">
+                    <input type="text" [(ngModel)]="formData.eveningHoursDetails" placeholder="Enter details"
+                        class="form-control">
+                </div>
+
+                <!-- Emergency Phone -->
+                <div class="question-row">
+                    <label>Do you have an emergency out-of-office phone number that is different than your main
+                        number?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="emergencyPhone" [value]="true"
+                                [(ngModel)]="formData.emergencyPhone"> Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="emergencyPhone" [value]="false"
+                                [(ngModel)]="formData.emergencyPhone"> No
+                        </label>
+                    </div>
+                </div>
+                <div class="conditional-input" *ngIf="formData.emergencyPhone">
+                    <input type="text" [(ngModel)]="formData.emergencyPhoneDetails" placeholder="Enter"
+                        class="form-control">
+                </div>
+
+                <!-- Public Transit -->
+                <div class="question-row">
+                    <label>Is there public transit accessibility near your practice?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="publicTransit" [value]="true"
+                                [(ngModel)]="formData.publicTransit"> Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="publicTransit" [value]="false"
+                                [(ngModel)]="formData.publicTransit"> No
+                        </label>
+                    </div>
+                </div>
+                <div class="conditional-input" *ngIf="formData.publicTransit">
+                    <input type="text" [(ngModel)]="formData.publicTransitDetails" placeholder="Enter details"
+                        class="form-control">
+                </div>
+
+                <!-- Disabled Adults -->
+                <div class="question-row">
+                    <label>Do you provide care to disabled adults?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="disabledAdults" [value]="true"
+                                [(ngModel)]="formData.disabledAdults"> Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="disabledAdults" [value]="false"
+                                [(ngModel)]="formData.disabledAdults"> No
+                        </label>
+                    </div>
+                </div>
+                <div class="conditional-input" *ngIf="formData.disabledAdults">
+                    <input type="text" [(ngModel)]="formData.disabledAdultsDetails" placeholder="Enter details"
+                        class="form-control">
+                </div>
+
+                <!-- Disabled Children -->
+                <div class="question-row">
+                    <label>Do you provide care to disabled children?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="disabledChildren" [value]="true"
+                                [(ngModel)]="formData.disabledChildren"> Yes
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="disabledChildren" [value]="false"
+                                [(ngModel)]="formData.disabledChildren"> No
+                        </label>
+                    </div>
+                </div>
+                <div class="conditional-input" *ngIf="formData.disabledChildren">
+                    <input type="text" [(ngModel)]="formData.disabledChildrenDetails" placeholder="Enter details"
+                        class="form-control">
+                </div>
+
+                <!-- Languages -->
+                <div class="input-row">
+                    <label>Other than English, what languages are spoken in your practice?</label>
+                    <input type="text" [(ngModel)]="formData.languages" placeholder="Enter" class="form-control">
+                </div>
+
+                <!-- Website -->
+                <div class="input-row">
+                    <label>What is your practice's full website address?</label>
+                    <input type="text" [(ngModel)]="formData.website" placeholder="Enter" class="form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-cancel" (click)="onCancel()">Cancel</button>
+            <button class="btn-submit" (click)="onSubmit()">Submit</button>
+        </div>
+    </div>
+</div>

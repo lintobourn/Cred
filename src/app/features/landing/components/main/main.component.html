@@ -1,0 +1,66 @@
+<div class="main-content">
+    <div class="icon-container">
+        <img src="assets/images/start-icon.svg" alt="Icon">
+    </div>
+    <p class="subtext">There is no records to show</p>
+    <h1 class="heading">Please start initial credentialing</h1>
+
+    <button class="btn btn-primary start-btn" (click)="onStart()">Start</button>
+
+    <!-- Network Participation Section -->
+    <div class="network-participation-section">
+        <h2 class="section-heading">Network Participation</h2>
+
+        <!-- Desktop Table View -->
+        <div class="table-container desktop-only">
+            <table class="participation-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Credentialing Dates</th>
+                        <th>Recred</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of networkParticipations">
+                        <td class="name-cell">{{ item.name }}</td>
+                        <td>{{ item.credentialingDates }}</td>
+                        <td>{{ item.recred }}</td>
+                        <td>{{ item.status }}</td>
+                        <td>
+                            <button class="btn-recred" (click)="onRecred(item)">{{ item.action }}</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="cards-container mobile-only">
+            <div class="participation-card" *ngFor="let item of networkParticipations">
+                <div class="card-row">
+                    <span class="card-label">Name</span>
+                    <span class="card-value name-value">{{ item.name }}</span>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Credentialing Dates</span>
+                    <span class="card-value">{{ item.credentialingDates }}</span>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Recred</span>
+                    <span class="card-value">{{ item.recred }}</span>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Status</span>
+                    <span class="card-value">{{ item.status }}</span>
+                </div>
+                <div class="card-row">
+                    <span class="card-label">Action</span>
+                    <button class="btn-recred" (click)="onRecred(item)">{{ item.action }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

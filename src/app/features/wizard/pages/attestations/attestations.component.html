@@ -1,0 +1,89 @@
+<div class="step-content">
+    <div class="step-header">
+        <h2>Attestations</h2>
+    </div>
+
+    <form [formGroup]="form" class="attestations-form">
+        <!-- Question 1 -->
+        <div class="question-group">
+            <label class="question-label">
+                Has your professional liability coverage ever been cancelled, restricted, declined or not renewed by the
+                carrier based on your individual liability history?
+            </label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" formControlName="liabilityCoverageCancelled" [value]="true">
+                    <span>Yes</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" formControlName="liabilityCoverageCancelled" [value]="false">
+                    <span>No</span>
+                </label>
+            </div>
+            <div class="error-message"
+                *ngIf="form.get('liabilityCoverageCancelled')?.invalid && form.get('liabilityCoverageCancelled')?.touched">
+                This field is required
+            </div>
+
+            <!-- Conditional Explanation -->
+            <div class="explanation-field" *ngIf="form.get('liabilityCoverageCancelled')?.value === true">
+                <input type="text" class="form-control" formControlName="liabilityCoverageExplanation"
+                    placeholder="Enter explanation">
+            </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="question-group">
+            <label class="question-label">
+                Have you had any professional liability actions (pending, settled, arbitrated, mediated, or litigated
+                within the past 10 years? If yes, provide information for each case.)
+            </label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" formControlName="liabilityActions" [value]="true">
+                    <span>Yes</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" formControlName="liabilityActions" [value]="false">
+                    <span>No</span>
+                </label>
+            </div>
+            <div class="error-message"
+                *ngIf="form.get('liabilityActions')?.invalid && form.get('liabilityActions')?.touched">
+                This field is required
+            </div>
+
+            <!-- Conditional Explanation -->
+            <div class="explanation-field" *ngIf="form.get('liabilityActions')?.value === true">
+                <input type="text" class="form-control" formControlName="liabilityActionsExplanation"
+                    placeholder="Enter explanation">
+            </div>
+        </div>
+
+        <!-- Attestation Checkbox -->
+        <div class="attestation-section">
+            <h3 class="section-title">Attestation</h3>
+            <label class="checkbox-option">
+                <input type="checkbox" formControlName="certified">
+                <span>I hereby certify that the information provided above is true and correct.</span>
+            </label>
+            <div class="error-message" *ngIf="form.get('certified')?.invalid && form.get('certified')?.touched">
+                You must certify to proceed
+            </div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group full-name-group">
+            <label class="form-label">Full Name</label>
+            <div class="input-wrapper">
+                <input type="text" class="form-control" formControlName="fullName" placeholder="Enter">
+            </div>
+            <div class="error-message" *ngIf="form.get('fullName')?.invalid && form.get('fullName')?.touched">
+                Full Name is required
+            </div>
+        </div>
+    </form>
+
+    <app-wizard-navigation [showBack]="true" [showNext]="true" (back)="onBack()" (next)="onNext()">
+    </app-wizard-navigation>
+</div>

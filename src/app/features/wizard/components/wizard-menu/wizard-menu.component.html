@@ -1,0 +1,15 @@
+<div class="wizard-menu">
+    <div class="step-item" *ngFor="let step of steps; let i = index" [class.active]="currentStep === i + 1"
+        [class.completed]="currentStep > i + 1">
+        <div class="step-indicator">
+            <span *ngIf="currentStep <= i + 1">{{ i + 1 }}</span>
+            <span *ngIf="currentStep > i + 1" class="check-icon">
+                <img src="assets/images/tick.svg" alt="">
+            </span>
+        </div>
+        <div class="step-details">
+            <h3 class="step-title">{{ step.title }}</h3>
+            <p class="step-description">{{ step.description }}</p>
+        </div>
+    </div>
+</div>

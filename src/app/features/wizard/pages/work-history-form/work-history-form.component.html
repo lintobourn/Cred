@@ -1,0 +1,144 @@
+<div class="step-content">
+    <div class="step-header">
+        <h2>{{ isEditMode ? 'Edit' : 'Add' }} Work History / School Dates</h2>
+        <p class="step-description">Fill in the details below</p>
+    </div>
+
+    <form [formGroup]="form" class="work-history-form">
+        <div class="form-grid">
+            <!-- Organization / Institution -->
+            <div class="form-group full-width">
+                <label class="form-label" for="organization">
+                    Organization / Institution
+                </label>
+                <input type="text" id="organization" class="form-control" formControlName="organization"
+                    placeholder="Enter organization or institution name">
+                <div class="error-message"
+                    *ngIf="form.get('organization')?.invalid && form.get('organization')?.touched">
+                    Organization is required
+                </div>
+            </div>
+
+            <!-- Address -->
+            <div class="form-group full-width">
+                <label class="form-label" for="address">
+                    Address
+                </label>
+                <input type="text" id="address" class="form-control" formControlName="address"
+                    placeholder="Enter address">
+                <div class="error-message" *ngIf="form.get('address')?.invalid && form.get('address')?.touched">
+                    Address is required
+                </div>
+            </div>
+
+            <!-- City -->
+            <div class="form-group">
+                <label class="form-label" for="city">
+                    City
+                </label>
+                <input type="text" id="city" class="form-control" formControlName="city" placeholder="Enter city">
+                <div class="error-message" *ngIf="form.get('city')?.invalid && form.get('city')?.touched">
+                    City is required
+                </div>
+            </div>
+
+            <!-- State -->
+            <div class="form-group">
+                <label class="form-label" for="state">
+                    State
+                </label>
+                <select id="state" class="form-control" formControlName="state">
+                    <option value="">Select State</option>
+                    <option value="AL">Alabama</option>
+                    <option value="AK">Alaska</option>
+                    <option value="AZ">Arizona</option>
+                    <option value="AR">Arkansas</option>
+                    <option value="CA">California</option>
+                    <!-- Add more states as needed -->
+                </select>
+                <div class="error-message" *ngIf="form.get('state')?.invalid && form.get('state')?.touched">
+                    State is required
+                </div>
+            </div>
+
+            <!-- ZIP -->
+            <div class="form-group">
+                <label class="form-label" for="zip">
+                    ZIP
+                </label>
+                <input type="text" id="zip" class="form-control" formControlName="zip" placeholder="Enter ZIP code">
+                <div class="error-message" *ngIf="form.get('zip')?.invalid && form.get('zip')?.touched">
+                    ZIP is required
+                </div>
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+                <label class="form-label" for="phone">
+                    Phone
+                </label>
+                <input type="tel" id="phone" class="form-control" formControlName="phone"
+                    placeholder="Enter phone number">
+                <div class="error-message" *ngIf="form.get('phone')?.invalid && form.get('phone')?.touched">
+                    Phone is required
+                </div>
+            </div>
+
+            <!-- Start Date -->
+            <div class="form-group">
+                <label class="form-label" for="startDate">
+                    Start Date
+                </label>
+                <input type="date" id="startDate" class="form-control" formControlName="startDate">
+                <div class="error-message" *ngIf="form.get('startDate')?.invalid && form.get('startDate')?.touched">
+                    Start date is required
+                </div>
+            </div>
+
+            <!-- End Date -->
+            <div class="form-group">
+                <label class="form-label" for="endDate">
+                    End Date
+                </label>
+                <input type="date" id="endDate" class="form-control" formControlName="endDate">
+                <div class="error-message" *ngIf="form.get('endDate')?.invalid && form.get('endDate')?.touched">
+                    End date is required
+                </div>
+            </div>
+
+            <!-- Gaps in Work History -->
+            <div class="form-group full-width">
+                <label class="form-label">Gaps in Work History</label>
+                <div class="radio-group">
+                    <label class="radio-label">
+                        <input type="radio" formControlName="hasGaps" [value]="true">
+                        <span>Yes</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" formControlName="hasGaps" [value]="false">
+                        <span>No</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Explanation (if gaps) -->
+            <div class="form-group full-width" *ngIf="form.get('hasGaps')?.value === true">
+                <label class="form-label" for="explanation">
+                    Explanation
+                </label>
+                <textarea id="explanation" class="form-control" formControlName="explanation" rows="3"
+                    placeholder="Please explain the gaps in your work history"></textarea>
+            </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions bottom-btngroup">
+            <button type="button" class="btn btn-outline" (click)="onCancel()">
+                Cancel
+            </button>
+            <button type="button" class="btn btn-primary" (click)="onSave()">
+                {{ isEditMode ? 'Update' : 'Save' }}
+            </button>
+        </div>
+    </form>
+</div>

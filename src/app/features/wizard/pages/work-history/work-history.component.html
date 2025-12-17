@@ -1,0 +1,112 @@
+<div class="step-content">
+    <div class="step-header">
+        <h2>Work History / School Dates</h2>
+
+    </div>
+
+    <div class="work-history-list">
+        <!-- Add More History Button -->
+        <div class="add-history-section" *ngIf="canAddMore()">
+            <button type="button" class="btn btn-primary add-history-btn" (click)="addMoreHistory()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                Add More History
+            </button>
+            <!-- <p class="history-count">{{ workHistories.length }} of 5 entries added</p> -->
+        </div>
+
+
+
+        <!-- Work History Table -->
+        <div class="table-container desktop-only">
+            <table class="work-history-table">
+                <thead>
+                    <tr>
+                        <th>Organization / Institution</th>
+
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="workHistories.length === 0">
+                        <td colspan="4" class="text-center">No records found</td>
+                    </tr>
+                    <tr *ngFor="let history of workHistories">
+                        <td>{{ history.organization }}</td>
+
+                        <td>{{ history.startDate }}</td>
+                        <td>{{ history.endDate }}</td>
+                        <td class="actions-cell">
+                            <button type="button" class="btn   add-history-btn" (click)="editHistory(history.id)"
+                                title="Edit">
+                                Edit
+                            </button>
+                            <button type="button" class="btn-icon btn-delete" (click)="deleteHistory(history.id)"
+                                title="Delete">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path
+                                        d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                                    </path>
+                                </svg>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="mobile-cards mobile-only">
+            <div class="history-card" *ngFor="let history of workHistories">
+                <div class="card-row">
+                    <div class="card-group">
+                        <label>Organization / Institution</label>
+                        <div class="value">{{ history.organization }}</div>
+                    </div>
+                </div>
+
+                <div class="card-row two-col">
+                    <div class="card-group">
+                        <label>Start Date</label>
+                        <div class="value">{{ history.startDate }}</div>
+                    </div>
+                    <div class="card-group">
+                        <label>End Date</label>
+                        <div class="value">{{ history.endDate }}</div>
+                    </div>
+                </div>
+
+                <div class="card-actions">
+                    <button type="button" class="btn-icon" (click)="editHistory(history.id)" title="Edit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                    </button>
+                    <button type="button" class="btn-icon btn-delete" (click)="deleteHistory(history.id)"
+                        title="Delete">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <app-wizard-navigation [showBack]="true" [showNext]="true" [disableNext]="workHistories.length === 0"
+        (back)="onBack()" (next)="onNext()">
+    </app-wizard-navigation>
+</div>

@@ -1,0 +1,90 @@
+<div class="step-content">
+    <div class="step-header">
+        <h2>Location</h2>
+    </div>
+    <div class="location-mainouter">
+        <div class="location-controls">
+            <div class="search-box">
+                <label class="control-label">Location Filter</label>
+                <div class="input-wrapper">
+                    <input type="text" [(ngModel)]="searchTerm" placeholder="Search" class="form-control">
+                    <i class="search-icon">🔍</i>
+                </div>
+            </div>
+            <button class="btn add-location-btn" (click)="onAddLocation()">Add Location</button>
+        </div>
+
+        <div class="table-container desktop-only">
+            <table class="location-table">
+                <thead>
+                    <tr>
+                        <th>Location Name</th>
+                        <th>Address</th>
+                        <th>City</th>
+                        <th>State</th>
+                        <th>Participating</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let location of filteredLocations">
+                        <td>
+                            <div class="checkbox-wrapper">
+                                <input type="checkbox" class="location-checkbox">
+                                {{ location.name }}
+                            </div>
+                        </td>
+                        <td>{{ location.address }}</td>
+                        <td>{{ location.city }}</td>
+                        <td>{{ location.state }}</td>
+                        <td [class.text-green]="location.participating" [class.text-red]="!location.participating">
+                            {{ location.participating ? 'Yes' : 'No' }}
+                        </td>
+                        <td>
+                            <button class="btn btn-outline btn-sm" (click)="onEdit(location.id)">Edit</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Mobile Card View -->
+        <div class="mobile-cards mobile-only">
+            <div class="location-card" *ngFor="let location of filteredLocations">
+                <div class="card-row">
+                    <div class="card-group">
+                        <label>Location Name</label>
+                        <div class="value">{{ location.name }}</div>
+                    </div>
+                </div>
+
+                <div class="card-row">
+                    <div class="card-group">
+                        <label>Address</label>
+                        <div class="value">{{ location.address }}</div>
+                    </div>
+                </div>
+
+                <div class="card-row two-col">
+                    <div class="card-group">
+                        <label>City</label>
+                        <div class="value">{{ location.city }}</div>
+                    </div>
+                    <div class="card-group">
+                        <label>State</label>
+                        <div class="value">{{ location.state }}</div>
+                    </div>
+                </div>
+
+                <div class="card-row">
+                    <div class="card-group">
+                        <label>Participating</label>
+                        <div class="value">{{ location.participating ? 'Sample' : 'Sample' }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-wizard-navigation (back)="onBack()" (next)="onNext()" [disableNext]="false">
+    </app-wizard-navigation>
+</div>

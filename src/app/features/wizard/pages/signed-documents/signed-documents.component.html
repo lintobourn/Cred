@@ -1,0 +1,28 @@
+<div class="step-content">
+    <div class="step-header">
+        <h2>Signed Documents</h2>
+    </div>
+
+    <div class="documents-grid">
+        <div class="document-card" *ngFor="let doc of documents">
+            <div class="document-icon">
+                <img src="/assets/icons/read-sign.svg" alt="Document icon">
+            </div>
+            <h3 class="document-title">{{ doc.title }}</h3>
+            <p class="document-subtitle">{{ doc.subtitle }}</p>
+            <div class="document-actions">
+                <button type="button" class="btn btn-outline" [class.signed]="doc.isSigned"
+                    (click)="onReadAndSign(doc)">
+                    {{ doc.isSigned ? 'Signed ✓' : 'Read & Sign' }}
+                </button>
+                <button type="button" class="btn btn-outline view-btn" (click)="onView(doc)">
+                    View
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <app-wizard-navigation [showBack]="true" [showNext]="true" [disableNext]="!hasSignedDocument" (back)="onBack()"
+        (next)="onNext()">
+    </app-wizard-navigation>
+</div>

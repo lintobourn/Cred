@@ -1,0 +1,140 @@
+.wizard-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
+    @media (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.accordion-item {
+    border-bottom: 1px solid #e0e0e0;
+    background-color: white;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &.active {
+        .accordion-header {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .step-indicator {
+            background-color: #ffffff;
+            border-color: #41A928;
+            color: #000000;
+            background: linear-gradient(to bottom, #ffffff, #ffffff);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+
+        .step-title {
+            color: #000000;
+            font-weight: 600;
+        }
+    }
+
+    &.completed {
+        .step-indicator {
+            background-color: #41A928;
+            border-color: #216610;
+            color: white;
+            background: linear-gradient(to bottom, #41A928, #41A928);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    &:not(.active) {
+        .accordion-header {
+            cursor: pointer;
+
+            &:hover {
+                background-color: #f8f9fa;
+            }
+        }
+    }
+}
+
+.accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    transition: background-color 0.2s;
+}
+
+.step-indicator-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.step-indicator {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    border: 2px solid #216610;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    font-weight: 600;
+    background: linear-gradient(to bottom, #1C540F, #48803B);
+    color: white;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+
+    svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.step-info {
+    flex: 1;
+}
+
+.step-title {
+    font-size: 14px !important;
+    font-weight: 500;
+    color: #333;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.info-icon {
+    color: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+
+    &.expanded {
+        max-height: 2000px;
+        /* Large enough to fit content */
+        transition: max-height 0.5s ease-in;
+    }
+}
+
+.mobile-form-content {
+    padding: 0;
+    /* Padding is handled by the form content itself via styles.scss */
+}

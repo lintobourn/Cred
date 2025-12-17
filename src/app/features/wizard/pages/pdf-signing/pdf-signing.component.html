@@ -1,0 +1,83 @@
+<div class="step-content">
+    <div class="step-header">
+        <h2>Sign PDF - {{ documentTitle }}</h2>
+    </div>
+
+    <div class="pdf-signing-container">
+
+
+        <!-- PDF Viewer -->
+        <div class="pdf-viewer-section">
+            <div class="pdf-container" #pdfContainer (mousemove)="onPdfMouseMove($event)" (mouseup)="onPdfMouseUp()">
+                <pdf-viewer [src]="pdfUrl" [render-text]="true" [original-size]="false" [fit-to-page]="false"
+                    [show-all]="true" [autoresize]="true" style="display: block; width: 100%; height: 100%;">
+                </pdf-viewer>
+
+                <!-- Placed Signature Overlay -->
+                <div *ngIf="placedSignature" class="signature-overlay" [class.fixed]="placedSignature.isFixed"
+                    [style.left.px]="placedSignature.x" [style.top.px]="placedSignature.y"
+                    [style.width.px]="placedSignature.width" [style.height.px]="placedSignature.height"
+                    (mousedown)="onSignatureMouseDown($event)">
+
+                    <!-- Drawn Signature -->
+                    <img *ngIf="placedSignature.type === 'drawn'" [src]="placedSignature.data" alt="Signature"
+                        class="signature-image">
+
+                    <!-- Typed Signature -->
+                    <div *ngIf="placedSignature.type === 'typed'" class="typed-signature">
+                        {{ placedSignature.data }}
+                    </div>
+
+                    <!-- Uploaded Signature -->
+                    <img *ngIf="placedSignature.type === 'uploaded'" [src]="placedSignature.data" alt="Signature"
+                        class="signature-image">
+
+                    <!-- Fix button (green checkmark) -->
+                    <button *ngIf="!placedSignature.isFixed" class="fix-signature-btn" (click)="fixSignature()"
+                        title="Fix signature position">
+                        ✓
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="signature-options-section">
+            <h3 class="section-title">Sign PDF</h3>
+
+            <!-- Signature Placement Info -->
+            <div *ngIf="placedSignature && !placedSignature.isFixed" class="placement-info">
+                <div class="info-content">
+                    <p class="info-text">Signature ready! Drag it on the PDF to place it.</p>
+                    <div class="resize-control">
+                        <label>Size: {{ signatureScale }}x</label>
+                        <input type="range" min="0.5" max="2.0" step="0.1" [value]="signatureScale"
+                            (input)="onScaleChange($event)" class="range-slider">
+                    </div>
+                </div>
+                <button type="button" class="btn btn-outline btn-sm" (click)="cancelPlacement()">
+                    Cancel
+                </button>
+            </div>
+
+            <!-- Compact Controls Panel -->
+            <div class="compact-controls">
+                <div class="signature-input-wrapper">
+                    <input type="text" [(ngModel)]="typedSignature" class="form-control signature-input"
+                        placeholder="Type your name here...">
+                </div>
+
+                <div class="action-buttons">
+                    <button type="button" class="btn btn-primary" (click)="useTypedSignature()">
+                        Use Signature
+                    </button>
+                    <button type="button" class="btn btn-primary"
+                        [disabled]="!placedSignature || !placedSignature.isFixed" (click)="uploadSignedPdf()">
+                        Upload Signed PDF
+                    </button>
+                    <button type="button" class="btn btn-outline" (click)="goBack()">
+                        Back to Documents
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

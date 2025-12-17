@@ -1,0 +1,182 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 2rem;
+    position: relative;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+
+    .title-wrapper {
+        border-left: 6px solid #41A928;
+        padding-left: 1rem;
+
+        h2 {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+        }
+    }
+
+    .close-btn {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: #666;
+        padding: 0;
+        line-height: 1;
+
+        &:hover {
+            color: #000;
+        }
+    }
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem 1rem;
+    margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+        color: #000;
+    }
+
+    .form-control {
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 14px;
+
+        &:focus {
+            outline: none;
+            border-color: #41A928;
+        }
+    }
+}
+
+.certification-section {
+    margin-bottom: 2rem;
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 14px;
+        color: #333;
+        cursor: pointer;
+
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    }
+}
+
+.signature-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: flex-end;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+
+    .signature-placeholder {
+        background-color: #ddd;
+        border-radius: 6px;
+        padding: 1rem;
+        height: 42px;
+        /* Match input height approx */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .placeholder-text {
+            color: #999;
+            font-size: 12px;
+            line-height: 1.2;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    button {
+        padding: 0.75rem 2rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .btn-cancel {
+        background: none;
+        border: none;
+        color: #000;
+        text-decoration: underline;
+        padding: 0.75rem 1rem;
+
+        &:hover {
+            color: #333;
+        }
+    }
+
+    .btn-done {
+        background-color: #41A928;
+        color: white;
+        border: none;
+
+        &:hover {
+            background-color: #369121;
+        }
+    }
+}

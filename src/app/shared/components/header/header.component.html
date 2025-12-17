@@ -1,0 +1,40 @@
+<header class="header">
+  <div class="header-bg">
+    <img src="assets/images/header-bg.jpg" alt="Header Background">
+  </div>
+  <div class="container header-content">
+    <div class="logo">
+      <img src="assets/images/logo-deltadental.svg" alt="Delta Dental">
+    </div>
+
+    <button class="hamburger-btn" (click)="toggleMenu()" [class.active]="isMenuOpen">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-menu" [class.open]="isMenuOpen">
+      <a href="#" class="nav-link active">Credential Application</a>
+      <a href="#" class="nav-link">Resources</a>
+      <div class="user-profile" (click)="toggleProfileMenu()">
+        <div class="user-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <span class="username">Hello, Username!</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+
+        <div class="dropdown-menu" *ngIf="isProfileMenuOpen">
+          <a href="#" class="dropdown-item">Logout</a>
+          <a routerLink="/signup" class="dropdown-item">Sign Up</a>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>

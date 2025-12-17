@@ -1,0 +1,100 @@
+<div class="step-content">
+    <div class="step-header">
+        <h2 class="step-title">Please start initial credentialing</h2>
+    </div>
+
+    <form [formGroup]="form" class="form-grid">
+        <div class="form-group">
+            <label class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" formControlName="dob">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">SSN</label>
+            <input type="text" class="form-control" formControlName="ssn" placeholder="Enter">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Gender</label>
+            <select class="form-control" formControlName="gender">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Ethnicity</label>
+            <input type="text" class="form-control" formControlName="ethnicity" placeholder="Enter">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Home Address</label>
+            <input type="text" class="form-control" formControlName="address" placeholder="Enter">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">City</label>
+            <select class="form-control" formControlName="city">
+                <option value="">Select</option>
+                <option value="ny">New York</option>
+                <option value="la">Los Angeles</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">State</label>
+            <select class="form-control" formControlName="state">
+                <option value="">Select</option>
+                <option value="ny">NY</option>
+                <option value="ca">CA</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Zip</label>
+            <input type="text" class="form-control" formControlName="zip" placeholder="Enter">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Phone</label>
+            <input type="text" class="form-control" formControlName="phone" placeholder="Enter">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Dental School</label>
+            <input type="text" class="form-control" formControlName="dentalSchool" placeholder="Enter">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">If Other</label>
+            <input type="text" class="form-control" formControlName="otherSchool" placeholder="Enter">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Year Graduated</label>
+            <select class="form-control" formControlName="yearGraduated">
+                <option value="">Select</option>
+                <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Specialty</label>
+            <select class="form-control" formControlName="specialty">
+                <option value="">Select</option>
+                <option value="general">General Dentistry</option>
+                <option value="ortho">Orthodontics</option>
+            </select>
+        </div>
+    </form>
+
+    <app-wizard-navigation [showBack]="true" [showNext]="true" (back)="onBack()" (next)="onNext()">
+    </app-wizard-navigation>
+</div>

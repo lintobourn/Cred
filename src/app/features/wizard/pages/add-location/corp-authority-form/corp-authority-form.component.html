@@ -1,0 +1,75 @@
+<div class="modal-overlay">
+    <div class="modal-container">
+        <div class="modal-header">
+            <div class="title-wrapper">
+                <h2>Corp Authority Form</h2>
+            </div>
+            <button class="close-btn" (click)="onCancel()">×</button>
+        </div>
+
+        <div class="modal-body">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Existing location</label>
+                    <input type="text" [(ngModel)]="formData.existingLocation" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Additional location name</label>
+                    <input type="text" [(ngModel)]="formData.additionalLocationName" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>City</label>
+                    <input type="text" [(ngModel)]="formData.city" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>State</label>
+                    <input type="text" [(ngModel)]="formData.state" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Contact</label>
+                    <input type="text" [(ngModel)]="formData.contact" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Primary Location</label>
+                    <input type="text" [(ngModel)]="formData.primaryLocation" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Address</label>
+                    <input type="text" [(ngModel)]="formData.address" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>TIN</label>
+                    <input type="text" [(ngModel)]="formData.tin" class="form-control">
+                </div>
+            </div>
+
+            <div class="certification-section">
+                <label class="checkbox-label">
+                    <input type="checkbox" [(ngModel)]="formData.certified">
+                    I here by certify that the information provided above is true and correct
+                </label>
+            </div>
+
+            <div class="signature-section">
+                <div class="form-group full-name">
+                    <label>Full Name</label>
+                    <input type="text" [(ngModel)]="formData.fullName" placeholder="Enter" class="form-control">
+                </div>
+                <div class="signature-placeholder">
+                    <div class="placeholder-text">
+                        XXX XXX: XXX XXX<br>
+                        XXX XXX: XXX XXX
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button class="btn-cancel" (click)="onCancel()">Cancel</button>
+            <button class="btn-done" (click)="onDone()">Done</button>
+        </div>
+    </div>
+</div>

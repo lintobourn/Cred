@@ -1,0 +1,33 @@
+<div class="wizard-layout">
+    <app-header></app-header>
+
+    <!-- Mobile Accordion View (< 1024px) -->
+    <div class="mobile-wizard-container container" *ngIf="isMobile">
+        <div class="back-link">
+            <a routerLink="/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Back to home page
+            </a>
+        </div>
+
+        <div class="mobile-wizard-wrapper">
+            <app-wizard-accordion></app-wizard-accordion>
+        </div>
+    </div>
+
+    <!-- Desktop View (>= 1024px) -->
+    <main class="wizard-container container" *ngIf="!isMobile">
+        <div class="wizard-content">
+            <router-outlet></router-outlet>
+        </div>
+        <aside class="wizard-sidebar">
+            <app-wizard-menu></app-wizard-menu>
+        </aside>
+    </main>
+
+    <app-footer></app-footer>
+</div>

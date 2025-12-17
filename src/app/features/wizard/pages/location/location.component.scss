@@ -1,0 +1,236 @@
+.step-header {
+    margin-top: 2rem;
+    padding-left: 1.6rem;
+    border-left: 6px solid var(--primary-color);
+
+    h2 {
+        font-size: 18px;
+        color: var(--text-color);
+        margin-bottom: 0.5rem;
+    }
+}
+
+.location-mainouter {
+    padding: 2rem;
+}
+
+.location-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .control-label {
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--text-color);
+    }
+
+    .input-wrapper {
+        position: relative;
+        width: 300px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem 2.5rem 0.5rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+
+        &:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+    }
+
+    .search-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-style: normal;
+        color: #999;
+        pointer-events: none;
+    }
+}
+
+.btn-outline {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1.5rem;
+    border-radius: 4px;
+    color: var(--text-color);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:hover {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+    }
+
+    &.btn-sm {
+        padding: 0.25rem 1rem;
+        font-size: 13px;
+    }
+}
+
+.table-container {
+    margin-bottom: 3rem;
+    overflow-x: auto;
+}
+
+.location-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th {
+        text-align: left;
+        padding: 1rem;
+        font-size: 13px;
+        color: #666;
+        font-weight: 500;
+        border-bottom: 1px solid #eee;
+    }
+
+    td {
+        padding: 1rem;
+        font-size: 14px;
+        color: var(--text-color);
+        border-bottom: 1px solid #eee;
+        vertical-align: middle;
+    }
+
+    .checkbox-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-weight: 600;
+    }
+
+    .location-checkbox {
+        width: 18px;
+        height: 18px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+}
+
+.text-green {
+    color: #41A928;
+    font-weight: 600;
+}
+
+.text-red {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+/* Mobile Card Styles */
+.mobile-only {
+    display: none;
+}
+
+
+
+.location-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-row {
+    margin-bottom: 1.5rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &.two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+}
+
+.card-group {
+    label {
+        display: block;
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 0.25rem;
+    }
+
+    .value {
+        font-size: 15px;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+}
+
+.add-location-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 6px !important;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #41A928;
+
+    svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    &:hover {
+        background-color: #41A928;
+        color: #ffffff;
+    }
+}
+
+@media (max-width: 1024px) {
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .mobile-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .location-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+
+        .search-box {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .input-wrapper {
+                width: 100%;
+            }
+        }
+
+        button {
+            width: 100%;
+        }
+    }
+}
