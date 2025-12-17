@@ -10,6 +10,8 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+yarn-debug.log*
+npm-debug.log*
 
 # IDEs and editors
 .idea/
@@ -40,3 +42,22 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Angular specific (from remote)
+/e2e/test-output/
+/.angular/
+.angular/
+
+# Node modules and dependency files (from remote)
+/package-lock.json
+/yarn.lock
+
+# Environment files
+/.env
+
+# Angular CLI and build artefacts
+/.angular-cli.json
+/.ng/
+
+# TypeScript cache
+*.tsbuildinfo
